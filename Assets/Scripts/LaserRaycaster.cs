@@ -9,7 +9,7 @@ public class LaserRaycaster : MonoBehaviour
 
     private void Update()
     {
-        const float MaxRaycastDist = 100f;
+        const float MaxRaycastDist = 15f;
         RaycastHit hit;
         bool hitGeo = Physics.Raycast(transform.position, transform.forward, out hit, MaxRaycastDist, hitLayers, QueryTriggerInteraction.Ignore);
         if (hitGeo)
