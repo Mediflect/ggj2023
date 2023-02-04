@@ -10,9 +10,6 @@ using UnityEngine.SceneManagement;
 public class TitleScreen : MonoBehaviour
 {
     public string gameSceneName;
-    [Header("DEBUG")]
-
-    private bool acceptingInput = true;
 
     private void Awake()
     {
