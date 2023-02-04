@@ -5895,7 +5895,6 @@ GameObject:
   - component: {fileID: 589759370152761652}
   - component: {fileID: 589759370152761653}
   - component: {fileID: 589759370152761650}
-  - component: {fileID: 6003244297552134423}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -6022,22 +6021,6 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!114 &6003244297552134423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 589759370152761654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45c89550ee7121f4ea1b33174a6520cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distance: 1
-  interactLayers:
-    serializedVersion: 2
-    m_Bits: 51
 --- !u!1 &589759370195811376
 GameObject:
   m_ObjectHideFlags: 0
@@ -6113,8 +6096,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controls: {fileID: 472738525061819662}
   headCamera: {fileID: 589759370152761652}
-  interactRaycaster: {fileID: 6003244297552134423}
   sounds: {fileID: 0}
+  laserRaycaster: {fileID: 5987607025374842324}
+  hasLaser: 0
 --- !u!114 &472738525061819662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6132,13 +6116,13 @@ MonoBehaviour:
   lookSpeed: 5
   maxVerticalLookAngle: 85
   invertVerticalLook: 0
-  speed: 2
-  runSpeed: 4
+  speed: 1.8
+  runSpeed: 3.6
   acceleration: 20
   applyGravity: 1
   floorLayers:
     serializedVersion: 2
-    m_Bits: 51
+    m_Bits: 1
 --- !u!1 &4036995377468481484
 GameObject:
   m_ObjectHideFlags: 0

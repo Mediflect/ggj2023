@@ -129,7 +129,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-7660200
+  m_Name: pb_Mesh47798
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -294,7 +294,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh40350
+  m_Name: pb_Mesh47762
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -1410,7 +1410,7 @@ PrefabInstance:
       objectReference: {fileID: 378693934}
     - target: {fileID: 516642127, guid: 6f901cc7c88a5c24588ee332dbf03f54, type: 3}
       propertyPath: m_VersionIndex
-      value: 675
+      value: 717
       objectReference: {fileID: 0}
     - target: {fileID: 589759370195811376, guid: 6f901cc7c88a5c24588ee332dbf03f54,
         type: 3}
@@ -1471,6 +1471,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6003244297552134423, guid: 6f901cc7c88a5c24588ee332dbf03f54,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7315234814565073653, guid: 6f901cc7c88a5c24588ee332dbf03f54,
+        type: 3}
+      propertyPath: hasLaser
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1871,7 +1881,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh40314
+  m_Name: pb_Mesh47718
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -2036,7 +2046,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh40368
+  m_Name: pb_Mesh47784
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -2586,7 +2596,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh40328
+  m_Name: pb_Mesh47736
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2

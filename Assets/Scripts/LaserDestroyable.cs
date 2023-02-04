@@ -17,11 +17,17 @@ public class LaserDestroyable : MonoBehaviour
     private Coroutine destructionCoroutine;
     private Coroutine stopDestructionCoroutine;
 
-    private void Awake()
+    private void OnEnable()
     {
         laserable.LaserStarted += OnLaserStarted;
         laserable.LaserStopped += OnLaserStopped;
         savedPosition = transform.position;
+    }
+
+    private void OnDisable()
+    {
+        laserable.LaserStarted -= OnLaserStarted;
+        laserable.LaserStopped -= OnLaserStopped;
     }
 
     private void OnLaserStarted()

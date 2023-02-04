@@ -8,6 +8,14 @@ public class Laserable : MonoBehaviour
     public bool laserIsTouching = false;
     public float laserStopTime = 0.1f;
 
+    private void Awake()
+    {
+        Player.LaserStopped += () => {
+            laserIsTouching = false;
+            LaserStopped?.Invoke();
+        };
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         Laser laser = other.gameObject.GetComponent<Laser>();

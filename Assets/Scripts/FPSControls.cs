@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class FPSControls : MonoBehaviour
 {
     public event Action InteractPressed;
+    public event Action InteractReleased;
     public event Action PowerPressed;
 
     public enum MotionType
@@ -74,9 +75,13 @@ public class FPSControls : MonoBehaviour
         UpdateRotation();
         UpdatePosition();
         // check for interacts
-        if (Mouse.current.leftButton.wasReleasedThisFrame)
+        if (Mouse.current.leftButton.wasPressedThisFrame)
         {
             InteractPressed?.Invoke();
+        }
+        if (Mouse.current.leftButton.wasReleasedThisFrame)
+        {
+            InteractReleased?.Invoke();
         }
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {

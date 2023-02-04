@@ -7,6 +7,12 @@ public class LaserRaycaster : MonoBehaviour
     public Transform laserDestination;
     public GameObject laserHitParticles;
 
+    private void OnDisable()
+    {
+        laserDestination.position = transform.position;
+        Update();
+    }
+
     private void Update()
     {
         const float MaxRaycastDist = 15f;

@@ -2,31 +2,37 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public static event System.Action LaserStopped;
+
     public FPSControls controls;
     public Camera headCamera;
-    public InteractRaycaster interactRaycaster;
     public PlayerSounds sounds;
+    public LaserRaycaster laserRaycaster;
+    public bool hasLaser = false;
 
     private void Awake()
     {
-        controls.InteractPressed += OnInteract;
-        interactRaycaster.InteractableFound += OnInteractableFound;
-        interactRaycaster.InteractableLost += OnInteractableLost;
+        controls.InteractPressed += OnInteractPressed;
+        controls.InteractReleased += OnInteractReleased;
+        laserRaycaster.gameObject.SetActive(false);
     }
 
-    private void OnInteract()
+    private void OnInteractPressed()
     {
-        if (interactRaycaster.CurrentInteractable != null)
+        if (!hasLaser)
         {
-            interactRaycaster.CurrentInteractable.Use(this);
+            return;
         }
+        laserRaycaster.gameObject.SetActive(true);
     }
 
-    private void OnInteractableFound()
+    private void OnInteractReleased()
     {
-    }
-
-    private void OnInteractableLost()
-    {
+        if (!hasLaser)
+        {
+            return;
+        }
+        laserRaycaster.gameObject.SetActive(false);
+        LaserStopped?.Invoke();
     }
 }
