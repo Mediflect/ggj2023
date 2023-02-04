@@ -46,6 +46,9 @@ public class FPSControls : MonoBehaviour
     [SerializeField]
     private bool applyGravity = true;
 
+    [SerializeField]
+    private LayerMask floorLayers = Physics.DefaultRaycastLayers;
+
     private MotionType currentMotion = MotionType.Stationary;
     private Vector3 currentVelocity = Vector3.zero;
     private float currentPitch = 0f;
@@ -142,6 +145,22 @@ public class FPSControls : MonoBehaviour
         else
         {
             currentMotion = isRunning ? MotionType.Running : MotionType.Walking;
+        }
+    }
+
+    private Vector3 AdjustVelocityToFloor(Vector3 velocity)
+    {
+        const float FloorCheckDist = 0.2f;
+        RaycastHit hit;
+        if (Physics.Raycast(charController.transform.position, Vector3.down, out hit, FloorCheckDist, floorLayers, QueryTriggerInteraction.Ignore))
+        {
+            Vector3 floorNormal = hit.normal;
+            // TODO: do the adjustment
+            return floorNormal;
+        }
+        else
+        {
+            return velocity;
         }
     }
 }
