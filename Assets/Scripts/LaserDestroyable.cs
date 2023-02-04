@@ -6,7 +6,7 @@ using Medi;
 public class LaserDestroyable : MonoBehaviour
 {
     public System.Action DestroyedByLaser;
-
+    public bool hasBeenDestroyed = false;
     public Laserable laserable;
     public float destroyTime = 2.5f;
     public float maxPositionNoise = 0.1f;
@@ -55,11 +55,12 @@ public class LaserDestroyable : MonoBehaviour
 
     private IEnumerator RunDestruction()
     {
-        Debug.Log("destruction");
+        // Debug.Log("destruction");
         yield return CoroutineHelpers.RunDecayingPositionNoise(transform, maxPositionNoise, destroyTime, false, reverse: true);
-        DestroyedByLaser?.Invoke();
+        hasBeenDestroyed = true;
         gameObject.SetActive(false);
         destructionCoroutine = null;
+        DestroyedByLaser?.Invoke();
     }
 
     private IEnumerator RunStopDestruction()
@@ -67,7 +68,7 @@ public class LaserDestroyable : MonoBehaviour
         yield return YieldInstructionCache.WaitForSeconds(destructionStopBufferTime);
         if (destructionCoroutine != null)
         {
-            Debug.Log("stoppping destruction");
+            // Debug.Log("stoppping destruction");
             StopCoroutine(destructionCoroutine);
             destructionCoroutine = null;
             transform.position = savedPosition;
