@@ -31,7 +31,7 @@ Transform:
   - {fileID: 626407075284861574}
   - {fileID: 4341312380085849368}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &6946331992149571936
 PrefabInstance:
@@ -2904,6 +2904,11 @@ PrefabInstance:
         type: 3}
       propertyPath: playsBreakSound
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6910250492310430894, guid: 4bd54d61e13a155428d608589dddd2f9,
+        type: 3}
+      propertyPath: maxPositionNoise
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 6910250492310430894, guid: 4bd54d61e13a155428d608589dddd2f9,
         type: 3}

@@ -23,12 +23,12 @@ public class Ambience : MonoBehaviour
     public void FadeIn()
     {
         ambienceAudio.Play();
-        CoroutineHelpers.RunAudioFade(ambienceAudio, 0f, targetVolume, fadeTime, false);
+        StartCoroutine(CoroutineHelpers.RunAudioFade(ambienceAudio, 0f, targetVolume, fadeTime, false));
     }
 
     public void FadeOut()
     {
-        CoroutineHelpers.RunAudioFade(ambienceAudio, targetVolume, 0f, fadeTime, false);
+        StartCoroutine(CoroutineHelpers.RunAudioFade(ambienceAudio, targetVolume, 0f, fadeTime, false));
         ambienceAudio.Stop();
     }
 }

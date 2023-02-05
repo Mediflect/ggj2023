@@ -66,7 +66,7 @@ public class LaserDestroyable : MonoBehaviour
         GlobalAudio.PlayBreaking();
         if (hasAnticipation)
         {
-            CoroutineHelpers.RunDecayingPositionNoise(transform, maxPositionNoise, destroyTime, false, reverse: true);
+            StartCoroutine(CoroutineHelpers.RunDecayingPositionNoise(transform, maxPositionNoise, destroyTime, false, reverse: true));
             yield return YieldInstructionCache.WaitForSeconds(destroyTime - anticipationTime);
             preventStopping = true;
             GlobalAudio.PlayBreak();
