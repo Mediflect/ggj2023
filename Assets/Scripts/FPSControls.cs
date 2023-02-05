@@ -91,9 +91,13 @@ public class FPSControls : MonoBehaviour
 
     private void UpdateRotation()
     {
+         // This value is framerate independent! Represent pixels moved since last frame (or last read?)
         Vector2 mouseDelta = Mouse.current.delta.ReadValue();
-        currentYaw += mouseDelta.x * lookSpeed * Time.deltaTime;
-        float pitchDelta = mouseDelta.y * lookSpeed * Time.deltaTime;
+        // This multiplier was arbitrarily applied to mouse movements in the old input system
+        // It makes the look speed variable easier to tune
+        const float MAGIC_LOOK_SENSITIVITY_ADJUSTMENT = 0.05f;
+        currentYaw += mouseDelta.x * lookSpeed * MAGIC_LOOK_SENSITIVITY_ADJUSTMENT;
+        float pitchDelta = mouseDelta.y * lookSpeed * MAGIC_LOOK_SENSITIVITY_ADJUSTMENT;
         if (!invertVerticalLook)
         {
             pitchDelta *= -1f;

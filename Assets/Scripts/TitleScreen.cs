@@ -23,7 +23,7 @@ public class TitleScreen : MonoBehaviour
 
     private void Update()
     {
-        if (Keyboard.current.anyKey.wasPressedThisFrame)
+        if (Keyboard.current.anyKey.wasPressedThisFrame || Mouse.current.leftButton.wasPressedThisFrame)
         {
             StartCoroutine(RunExitSequence());
         }
@@ -31,6 +31,8 @@ public class TitleScreen : MonoBehaviour
 
     private IEnumerator RunExitSequence()
     {
+        GlobalAudio.PlayStart();
+        yield return new WaitForSeconds(2f);
         SceneManager.LoadScene(gameSceneName);
         yield break;
     }

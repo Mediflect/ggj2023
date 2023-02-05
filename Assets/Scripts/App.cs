@@ -12,9 +12,6 @@ public class App : MonoBehaviour
 
     private static List<Action> requestsForApp = new List<Action>();
 
-    public static Player Player => Instance.player;
-    public Player player;
-
     public static void Request(Action onAppExists)
     {
         if (Instance != null)

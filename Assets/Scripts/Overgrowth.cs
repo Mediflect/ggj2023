@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class Overgrowth : MonoBehaviour
 {
+    public event System.Action Destroyed;
+
     public List<LaserDestroyable> nodes;
 
     private void Awake()
     {
+        if (nodes.Count < 1)
+        {
+            Debug.LogWarning("Overgrowth has no attached nodes");
+        }
+        
         foreach (LaserDestroyable node in nodes)
         {
             node.DestroyedByLaser += OnNodeDestroyed;
@@ -27,5 +34,6 @@ public class Overgrowth : MonoBehaviour
 
         // otherwise, all nodes have been destroyed, so destroy this
         gameObject.SetActive(false);
+        Destroyed?.Invoke();
     }
 }
