@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PowerPickup : MonoBehaviour
 {
+    public event System.Action PowerAqcuired;
+
     private void OnTriggerEnter(Collider other)
     {
         Player player = other.gameObject.GetComponent<Player>();
@@ -12,6 +14,7 @@ public class PowerPickup : MonoBehaviour
             player.hasLaser = true;
             GlobalAudio.PlayPickup();
             transform.parent.gameObject.SetActive(false);
+            PowerAqcuired?.Invoke();
         }
     }
 }

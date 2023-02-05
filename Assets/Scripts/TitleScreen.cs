@@ -16,13 +16,15 @@ public class TitleScreen : MonoBehaviour
     public float fadeOutTime = 4f;
     public TextMeshProUGUI titleText;
     public TextMeshProUGUI inputPromptText;
+    
 
     private bool acceptingInput = false;
-    private bool isExiting = false;
+    private const float TextFadeTime = 2f;
+
 
     private void Update()
     {
-        if (!isExiting && acceptingInput && Keyboard.current.anyKey.wasPressedThisFrame || Mouse.current.leftButton.wasPressedThisFrame)
+        if (acceptingInput && (Keyboard.current.anyKey.wasPressedThisFrame || Mouse.current.leftButton.wasPressedThisFrame))
         {
             StartCoroutine(RunExitSequence());
         }
@@ -34,13 +36,15 @@ public class TitleScreen : MonoBehaviour
         titleAmbience.RawPlay();
         blackFade.color = blackFade.color.WithA(1f);
         yield return CoroutineHelpers.RunImageFade(blackFade, 1f, 0f, fadeInTime, false);
-        yield return CoroutineHelpers.RunTextFade(inputPromptText, 0f, 1f, fadeInTime, false);
+        yield return CoroutineHelpers.RunTextFade(inputPromptText, 0f, 1f, TextFadeTime, false);
         acceptingInput = true;
     }
 
+    
+
     private IEnumerator RunExitSequence()
     {
-        isExiting = true;
+        acceptingInput = false;
         GlobalAudio.PlayStart();
         titleAmbience.FadeOut();
         yield return CoroutineHelpers.RunImageFade(blackFade, 0f, 1f, fadeOutTime, false);
