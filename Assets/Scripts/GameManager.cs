@@ -21,19 +21,29 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI powerTipText;
     public PowerPickup powerPickup;
     public LaserRaycaster laserRaycaster;
+    public Material thornMaterial;
+    [ColorUsage(true, true)]
+    public Color angryThornColor;
+    [ColorUsage(true, true)]
+    public Color happyThornColor;
+    
 
     private const float TextFadeTime = 1.5f;
     private const float TextHoldTime = 5f;
+    private const string EMISSION_PROP = "_EmissionColor";
+    private Color originalThornColor;
 
     private void Awake()
     {
         hubOvergrowth.Destroyed += OnHubOvergrowthDestroyed;
         finalOvergrowth.Destroyed += OnFinalOvergrowthDestroyed;
         powerPickup.PowerAqcuired += () => StartCoroutine(RunPowerTip());
+        originalThornColor = thornMaterial.GetColor(EMISSION_PROP);
     }
 
     private IEnumerator Start()
     {
+        ThornMaterialHelper.ResetThornColor();
         controls.enabled = false;
         blackFade.color = blackFade.color.WithA(1);
         yield return CoroutineHelpers.RunImageFade(blackFade, 1f, 0f, fadeTime, false);
@@ -47,6 +57,10 @@ public class GameManager : MonoBehaviour
     private void OnHubOvergrowthDestroyed()
     {
         finaleAmbience.FadeIn();
+        StartCoroutine(CoroutineHelpers.RunTimer((progress) => {
+            thornMaterial.SetColor(EMISSION_PROP, Color.Lerp(originalThornColor, angryThornColor, progress));
+        }, 4f));
+        // thornMaterial.SetColor(EMISSION_PROP, angryThornColor);
     }
 
     private void OnFinalOvergrowthDestroyed()
@@ -61,6 +75,7 @@ public class GameManager : MonoBehaviour
         finaleAmbience.FadeOut();
         levelAmbience.FadeOut();
         yield return CoroutineHelpers.RunImageFade(blackFade, 0f, 1f, fadeTime, false);
+        thornMaterial.SetColor(EMISSION_PROP, happyThornColor);
         SceneManager.LoadScene(creditsSceneName);
     }
 
