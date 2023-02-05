@@ -12,6 +12,7 @@ public class LaserDestroyable : MonoBehaviour
     public float maxPositionNoise = 0.1f;
     public float destructionStopBufferTime = 0.1f;
     public bool playsBreakSound = false;
+    public bool playsSimpleBreakSound = false;
 
     private Vector3 savedPosition;
 
@@ -60,18 +61,11 @@ public class LaserDestroyable : MonoBehaviour
         GlobalAudio.PlayBreaking();
         yield return CoroutineHelpers.RunDecayingPositionNoise(transform, maxPositionNoise, destroyTime, false, reverse: true);
         GlobalAudio.StopBreaking();
-        hasBeenDestroyed = true;
-        gameObject.SetActive(false);
-        destructionCoroutine = null;
-        if (playsBreakSound)
-        {
-            GlobalAudio.PlayBreak();
-        }
-        DestroyedByLaser?.Invoke();
+        FinishDestruction();
     }
 
     private IEnumerator RunStopDestruction()
-    {   
+    {
         yield return YieldInstructionCache.WaitForSeconds(destructionStopBufferTime);
         if (destructionCoroutine != null)
         {
@@ -83,4 +77,22 @@ public class LaserDestroyable : MonoBehaviour
         }
         stopDestructionCoroutine = null;
     }
+
+    [ContextMenu("Force Destroy")]
+    private void FinishDestruction()
+    {
+        hasBeenDestroyed = true;
+        gameObject.SetActive(false);
+        destructionCoroutine = null;
+        if (playsBreakSound)
+        {
+            GlobalAudio.PlayBreak();
+        }
+        else if (playsSimpleBreakSound)
+        {
+            GlobalAudio.PlaySimpleBreak();
+        }
+        DestroyedByLaser?.Invoke();
+    }
+
 }

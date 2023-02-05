@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6654390328010859274}
   - component: {fileID: 6910250492310430894}
+  - component: {fileID: 3728290312091686949}
+  - component: {fileID: 6211243195953906865}
   m_Layer: 0
   m_Name: Node
   m_TagString: Untagged
@@ -98,6 +100,35 @@ MonoBehaviour:
   maxPositionNoise: 0.01
   destructionStopBufferTime: 0.1
   playsBreakSound: 1
+  playsSimpleBreakSound: 0
+--- !u!114 &3728290312091686949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 947180538151662649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4df96cb55e5aca44a53829c0fe96bf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  period: 5
+  amplitude: 0.04
+  randomizePeriod: 0
+--- !u!114 &6211243195953906865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 947180538151662649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74c31c01ffc4b3f46b1c37685f1f802c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pulse: {fileID: 3728290312091686949}
 --- !u!1 &1485276277829889265
 GameObject:
   m_ObjectHideFlags: 0

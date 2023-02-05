@@ -8,6 +8,13 @@ public class Ambience : MonoBehaviour
     public AudioSource ambienceAudio;
     public float fadeTime = 1f;
 
+    private float targetVolume;
+
+    private void Awake()
+    {
+        targetVolume = ambienceAudio.volume;
+    }
+
     public void RawPlay()
     {
         ambienceAudio.Play();
@@ -16,12 +23,12 @@ public class Ambience : MonoBehaviour
     public void FadeIn()
     {
         ambienceAudio.Play();
-        CoroutineHelpers.RunAudioFade(ambienceAudio, 0f, 1f, fadeTime, false);
+        CoroutineHelpers.RunAudioFade(ambienceAudio, 0f, targetVolume, fadeTime, false);
     }
 
     public void FadeOut()
     {
-        CoroutineHelpers.RunAudioFade(ambienceAudio, 1f, 0f, fadeTime, false);
+        CoroutineHelpers.RunAudioFade(ambienceAudio, targetVolume, 0f, fadeTime, false);
         ambienceAudio.Stop();
     }
 }

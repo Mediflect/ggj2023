@@ -8,6 +8,7 @@ public class GlobalAudio : MonoBehaviour
 
     public AudioSource startSfx;
     public AudioSource breakSfx;
+    public AudioSource simpleBreakSfx;
     public AudioSource pickupSfx;
     public AudioSource breakingSfx;
 
@@ -19,6 +20,11 @@ public class GlobalAudio : MonoBehaviour
     public static void PlayBreak()
     {
         Instance.breakSfx.Play();
+    }
+
+    public static void PlaySimpleBreak()
+    {
+        Instance.simpleBreakSfx.Play();
     }
 
     public static void PlayPickup()
