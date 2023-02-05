@@ -18,10 +18,11 @@ public class TitleScreen : MonoBehaviour
     public TextMeshProUGUI inputPromptText;
 
     private bool acceptingInput = false;
+    private bool isExiting = false;
 
     private void Update()
     {
-        if (acceptingInput && Keyboard.current.anyKey.wasPressedThisFrame || Mouse.current.leftButton.wasPressedThisFrame)
+        if (!isExiting && acceptingInput && Keyboard.current.anyKey.wasPressedThisFrame || Mouse.current.leftButton.wasPressedThisFrame)
         {
             StartCoroutine(RunExitSequence());
         }
@@ -39,6 +40,7 @@ public class TitleScreen : MonoBehaviour
 
     private IEnumerator RunExitSequence()
     {
+        isExiting = true;
         GlobalAudio.PlayStart();
         titleAmbience.FadeOut();
         yield return CoroutineHelpers.RunImageFade(blackFade, 0f, 1f, fadeOutTime, false);
