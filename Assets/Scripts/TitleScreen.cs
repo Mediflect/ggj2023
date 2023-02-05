@@ -10,6 +10,7 @@ using UnityEngine.SceneManagement;
 public class TitleScreen : MonoBehaviour
 {
     public string gameSceneName;
+    public Ambience titleAmbience;
 
     private void Awake()
     {
@@ -29,9 +30,16 @@ public class TitleScreen : MonoBehaviour
         }
     }
 
+    private IEnumerator Start()
+    {
+        titleAmbience.RawPlay();
+        yield break;
+    }
+
     private IEnumerator RunExitSequence()
     {
         GlobalAudio.PlayStart();
+        titleAmbience.FadeOut();
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene(gameSceneName);
         yield break;

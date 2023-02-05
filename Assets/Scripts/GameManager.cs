@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public Overgrowth finalOvergrowth;
     public string creditsSceneName = "Credits";
+    public Ambience levelAmbience;
 
     private void Awake()
     {
