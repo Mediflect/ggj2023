@@ -14,10 +14,15 @@ public class LaserDestroyable : MonoBehaviour
     public bool playsBreakSound = false;
     public bool playsSimpleBreakSound = false;
 
+    [Header("Anticipation stuff")]
+    public bool hasAnticipation = false;
+    public float anticipationTime = 0.3f;
+
     private Vector3 savedPosition;
 
     private Coroutine destructionCoroutine;
     private Coroutine stopDestructionCoroutine;
+    private bool preventStopping = false;
 
     private void OnEnable()
     {
@@ -49,7 +54,7 @@ public class LaserDestroyable : MonoBehaviour
 
     private void OnLaserStopped()
     {
-        if (stopDestructionCoroutine == null)
+        if (stopDestructionCoroutine == null && !preventStopping)
         {
             stopDestructionCoroutine = StartCoroutine(RunStopDestruction());
         }
@@ -59,7 +64,18 @@ public class LaserDestroyable : MonoBehaviour
     {
         // Debug.Log("destruction");
         GlobalAudio.PlayBreaking();
-        yield return CoroutineHelpers.RunDecayingPositionNoise(transform, maxPositionNoise, destroyTime, false, reverse: true);
+        if (hasAnticipation)
+        {
+            CoroutineHelpers.RunDecayingPositionNoise(transform, maxPositionNoise, destroyTime, false, reverse: true);
+            yield return YieldInstructionCache.WaitForSeconds(destroyTime - anticipationTime);
+            preventStopping = true;
+            GlobalAudio.PlayBreak();
+            yield return YieldInstructionCache.WaitForSeconds(anticipationTime);
+        }
+        else
+        {
+            yield return CoroutineHelpers.RunDecayingPositionNoise(transform, maxPositionNoise, destroyTime, false, reverse: true);
+        }
         GlobalAudio.StopBreaking();
         FinishDestruction();
     }
@@ -84,7 +100,7 @@ public class LaserDestroyable : MonoBehaviour
         hasBeenDestroyed = true;
         gameObject.SetActive(false);
         destructionCoroutine = null;
-        if (playsBreakSound)
+        if (playsBreakSound && !hasAnticipation)
         {
             GlobalAudio.PlayBreak();
         }

@@ -320,7 +320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSfx: {fileID: 3718112645044660962}
   breakSfx: {fileID: 3643668762954369741}
-  simpleBreakSfx: {fileID: 0}
+  simpleBreakSfx: {fileID: 8481912328890204071}
   pickupSfx: {fileID: 6560911348859245410}
   breakingSfx: {fileID: 4916627357661848067}
 --- !u!1 &3968861149255702017

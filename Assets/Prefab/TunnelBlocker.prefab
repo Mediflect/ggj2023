@@ -2897,6 +2897,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6910250492310430894, guid: 4bd54d61e13a155428d608589dddd2f9,
         type: 3}
+      propertyPath: hasAnticipation
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6910250492310430894, guid: 4bd54d61e13a155428d608589dddd2f9,
+        type: 3}
       propertyPath: playsBreakSound
       value: 0
       objectReference: {fileID: 0}

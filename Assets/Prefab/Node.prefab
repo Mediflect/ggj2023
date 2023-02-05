@@ -101,6 +101,8 @@ MonoBehaviour:
   destructionStopBufferTime: 0.1
   playsBreakSound: 1
   playsSimpleBreakSound: 0
+  hasAnticipation: 1
+  anticipationTime: 0.3
 --- !u!114 &3728290312091686949
 MonoBehaviour:
   m_ObjectHideFlags: 0
