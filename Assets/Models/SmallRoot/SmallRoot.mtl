@@ -1,0 +1,10 @@
+newmtl GlowingThorn
+map_Kd E:/GameDev/Unity/ggj2023/Assets/Textures/Wood_09-512x512_Desaturated.png
+Kd 1 1 1
+d 1
+
+newmtl Wood
+map_Kd E:/GameDev/Unity/ggj2023/Assets/Textures/Wood_08-512x512.png
+Kd 1 1 1
+d 1
+
