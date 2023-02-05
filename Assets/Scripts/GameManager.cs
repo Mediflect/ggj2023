@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI inputTipText;
     public TextMeshProUGUI powerTipText;
     public PowerPickup powerPickup;
+    public LaserRaycaster laserRaycaster;
 
     private const float TextFadeTime = 1.5f;
     private const float TextHoldTime = 5f;
@@ -55,7 +56,10 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator RunTransitionToCredits()
     {
+        laserRaycaster.gameObject.SetActive(false);
         controls.enabled = false;
+        finaleAmbience.FadeOut();
+        levelAmbience.FadeOut();
         yield return CoroutineHelpers.RunImageFade(blackFade, 0f, 1f, fadeTime, false);
         SceneManager.LoadScene(creditsSceneName);
     }
