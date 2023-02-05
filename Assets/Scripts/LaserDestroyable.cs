@@ -13,6 +13,8 @@ public class LaserDestroyable : MonoBehaviour
     public float destructionStopBufferTime = 0.1f;
     public bool playsBreakSound = false;
     public bool playsSimpleBreakSound = false;
+    public GameObject geometry;
+    public GameObject destroyedParticles;
 
     [Header("Anticipation stuff")]
     public bool hasAnticipation = false;
@@ -98,7 +100,8 @@ public class LaserDestroyable : MonoBehaviour
     private void FinishDestruction()
     {
         hasBeenDestroyed = true;
-        gameObject.SetActive(false);
+        destroyedParticles.SetActive(true);
+        geometry.SetActive(false);
         destructionCoroutine = null;
         if (playsBreakSound && !hasAnticipation)
         {
