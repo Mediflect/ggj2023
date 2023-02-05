@@ -100,8 +100,14 @@ public class LaserDestroyable : MonoBehaviour
     private void FinishDestruction()
     {
         hasBeenDestroyed = true;
-        destroyedParticles.SetActive(true);
-        geometry.SetActive(false);
+        if (destroyedParticles != null)
+        {
+            destroyedParticles.SetActive(true);
+        }
+        if (geometry != null)
+        {
+            geometry.SetActive(false);
+        }
         destructionCoroutine = null;
         if (playsBreakSound && !hasAnticipation)
         {
