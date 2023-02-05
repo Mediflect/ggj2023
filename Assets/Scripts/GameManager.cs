@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public Ambience finaleAmbience;
     public RawImage blackFade;
     public float fadeTime = 4f;
+    public float endFadeTime = 7f;
     public FPSControls controls;
 
     public TextMeshProUGUI inputTipText;
@@ -74,7 +75,7 @@ public class GameManager : MonoBehaviour
         controls.enabled = false;
         finaleAmbience.FadeOut();
         levelAmbience.FadeOut();
-        yield return CoroutineHelpers.RunImageFade(blackFade, 0f, 1f, fadeTime, false);
+        yield return CoroutineHelpers.RunImageFade(blackFade, 0f, 1f, endFadeTime, false);
         thornMaterial.SetColor(EMISSION_PROP, happyThornColor);
         SceneManager.LoadScene(creditsSceneName);
     }

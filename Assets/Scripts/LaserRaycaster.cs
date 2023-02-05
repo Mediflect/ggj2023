@@ -7,8 +7,14 @@ public class LaserRaycaster : MonoBehaviour
     public Transform laserDestination;
     public GameObject laserHitParticles;
 
+    private void OnEnable()
+    {
+        GlobalAudio.StartLaserHum();
+    }
+
     private void OnDisable()
     {
+        GlobalAudio.StopLaserHum();
         laserDestination.position = transform.position;
         Update();
     }

@@ -1650,7 +1650,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   titleAmbience: {fileID: 954843002}
   blackFade: {fileID: 721827855}
-  fadeInTime: 4
+  fadeInTime: 6
   fadeOutTime: 4
 --- !u!1001 &1225952401
 PrefabInstance:

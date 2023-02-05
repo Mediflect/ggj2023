@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Medi;
 
 public class GlobalAudio : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class GlobalAudio : MonoBehaviour
     public AudioSource simpleBreakSfx;
     public AudioSource pickupSfx;
     public AudioSource breakingSfx;
+    public AudioSource laserHumSfx;
 
     public static void PlayStart()
     {
@@ -40,6 +42,19 @@ public class GlobalAudio : MonoBehaviour
     public static void StopBreaking()
     {
         Instance.breakingSfx.Stop();
+    }
+
+    private const float laserHumFadeTime = 0.25f;
+    private const float laserHumTargetVolume = 0.085f;
+
+    public static void StartLaserHum()
+    {
+        Instance.StartCoroutine(CoroutineHelpers.RunAudioFade(Instance.laserHumSfx, 0f, laserHumTargetVolume, laserHumFadeTime, false));
+    }
+
+    public static void StopLaserHum()
+    {
+        Instance.StartCoroutine(CoroutineHelpers.RunAudioFade(Instance.laserHumSfx, laserHumTargetVolume, 0f, laserHumFadeTime, false));
     }
 
     private void Awake()
