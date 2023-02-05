@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator Start()
     {
+        levelAmbience.FadeIn();
         ThornMaterialHelper.ResetThornColor();
         controls.enabled = false;
         blackFade.color = blackFade.color.WithA(1);
