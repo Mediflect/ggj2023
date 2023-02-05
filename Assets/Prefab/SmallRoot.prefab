@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 833773287175438934}
   - component: {fileID: 8720538840423743431}
+  - component: {fileID: 1226047120788231678}
+  - component: {fileID: 6459138201807767629}
   m_Layer: 0
   m_Name: SmallRoot
   m_TagString: Untagged
@@ -46,6 +48,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shrivelTime: 1
+--- !u!114 &1226047120788231678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833773287175438929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74c31c01ffc4b3f46b1c37685f1f802c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pulse: {fileID: 6459138201807767629}
+--- !u!114 &6459138201807767629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833773287175438929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4df96cb55e5aca44a53829c0fe96bf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  period: 4
+  amplitude: 0.025
+  randomizePeriod: 0
 --- !u!1001 &8171641429676629156
 PrefabInstance:
   m_ObjectHideFlags: 0
